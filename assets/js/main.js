@@ -173,6 +173,17 @@
     });
 
     $('#portfolio-flters li').on('click', function() {
+      // alert("Hello! I am an alert box!!");
+
+      if($(this).hasClass('filter-active')){
+        $("#portfolio-flters li").removeClass('filter-active');
+        portfolioIsotope.isotope({
+          filter: "*"
+        });
+        aos_init();
+        return;
+      }
+
       $("#portfolio-flters li").removeClass('filter-active');
       $(this).addClass('filter-active');
 
@@ -207,4 +218,96 @@
     aos_init();
   });
 
+  $(function() {
+
+    if ( $('.owl-2').length > 0 ) {
+          $('.owl-2').owlCarousel({
+              center: false,
+              items: 1,
+              loop: true,
+              stagePadding: 0,
+              margin: 20,
+              smartSpeed: 2000,
+              autoplay: true,
+              nav: true,
+              dots: true,
+              pauseOnHover: false,
+              responsive:{
+                  600:{
+                      margin: 20,
+                      nav: true,
+                    items: 2
+                  },
+                  1000:{
+                      margin: 20,
+                      stagePadding: 0,
+                      nav: true,
+                    items: 3
+                  }
+              }
+          });            
+      }
+  
+  })
+
+  $('.video-carousel').owlCarousel({
+    items: 1,
+    loop: true,
+    video: true,
+    lazyLoad: true
+  }); 
+
+  $('.main-carousel').flickity({
+    // options
+    cellAlign: 'center',
+    contain: true
+  });
+
+  /**
+   * Portfolio details slider
+   */
+   new Swiper('.portfolio-details-slider', {
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    }
+  });
+
 })(jQuery);
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  // slides[slideIndex-1].style.display = "block";
+  // dots[slideIndex-1].className += " active";
+  
+}
