@@ -1703,12 +1703,13 @@ section {
 # Vidio
 --------------------------------------------------------------*/
 
-.Vidio .container .row .col-sm {
-  margin-top : 20px
+.Vidio .container .row .col-sm-3 {
+  margin-top: 20px;
+  font-size: 95%;
 }
 
 .Vidio .container center {
-  margin-top : 20px
+  margin-top : 20px;
 }
 
 .Vidio .play-btn {
@@ -1850,4 +1851,14 @@ section {
 
 .publikasi .icon-box:hover h4 a {
   color: #9cd7ff;
+}
+
+
+/* Pemetaaan */
+
+.pemetaan img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
